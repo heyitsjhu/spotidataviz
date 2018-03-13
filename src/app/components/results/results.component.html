@@ -1,20 +1,13 @@
-
-
-<p *ngIf="queryString">Showing search results for <span>{{queryString}}</span></p>
-
-<div class="container search__container" *ngIf="results">
-  <h2 class="search__heading" *ngIf="queryString">Showing search results for <span>{{queryString}}</span></h2>
-  <div class="search__results">
-    <div class="result__item" *ngFor="let result of results">
-      <h3 class="result__heading" [attr.data-track-id]="result.id">{{result.name}}</h3>
-      <img class="result__img" *ngIf="result.album.images.length > 0" src={{result.album.images[0].url}} />
-      <div class="" *ngIf="result.artists.length > 0">
-        <p>By:
-          <span *ngFor="let artist of result.artists">
-            <a href={{artist.external_urls.spotify}}>{{artist.name}}</a>
-          </span>
-        </p>
-      </div>
+<div class="search__results" *ngIf="results">
+  <div class="result__item" *ngFor="let result of results" [attr.data-track-id]="result.id">
+    <div class="img__container">
+      <img class="result-item__img" *ngIf="result.album.images.length > 0" src={{result.album.images[0].url}} />
     </div>
+    <h3 class="result-item__heading">{{result.name}}</h3>
+    <p class="result-item__description" *ngIf="result.artists.length > 0">By:
+      <span *ngFor="let artist of result.artists; index as i; last as isLast">
+        <a href={{artist.external_urls.spotify}}>{{artist.name}}</a><span *ngIf="!isLast">,</span>
+      </span>
+    </p>
   </div>
 </div>

@@ -13,6 +13,7 @@ export class ResultsComponent implements OnInit, OnChanges {
   constructor(private _spotifyService: SpotifyService) { }
 
   ngOnInit() {
+    this.fetchResults('odesza');
   }
 
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {

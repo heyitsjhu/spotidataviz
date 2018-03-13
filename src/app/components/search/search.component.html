@@ -8,4 +8,7 @@
     />
   </div>
 </form>
-<app-results [queryString]="searchString"></app-results>
+<div class="search__container">
+  <h2 class="search__heading" *ngIf="searchString">Showing search results for <span>{{searchString}}</span></h2>
+  <app-results [queryString]="searchString"></app-results>
+</div>

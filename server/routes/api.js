@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/results', (req, res) => {
-  console.log(req.query.q);
+  // console.log(req.query); // check what the current query inputs are
   spotify
     .search({ type: 'track', query: req.query.q })
     .then(function(data) {
