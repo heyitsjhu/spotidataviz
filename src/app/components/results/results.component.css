@@ -1,13 +1,15 @@
 .search__container {
-  display: flex;
+  width: 100%;
 }
 .search__results {
-  flex: 0 0 auto;
-  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-.search__heading {
-
+.result__item {
+  flex: 0 0 auto;
+  width: 25%;
 }
 
 .result__heading {

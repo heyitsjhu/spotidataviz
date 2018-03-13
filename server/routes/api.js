@@ -13,8 +13,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/results', (req, res) => {
+  console.log(req.query.q);
   spotify
-    .search({ type: 'track', query: 'Odesza' })
+    .search({ type: 'track', query: req.query.q })
     .then(function(data) {
       res.status(200).json(data);
     })

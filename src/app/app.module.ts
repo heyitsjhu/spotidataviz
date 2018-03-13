@@ -15,10 +15,6 @@ const appRoutes: Routes = [
     path: '',
     redirectTo: 'results',
     pathMatch: 'full'
-  },
-  {
-    path: 'results',
-    component: ResultsComponent
   }
 ];
 

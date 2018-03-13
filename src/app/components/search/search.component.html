@@ -1,9 +1,11 @@
 <form>
   <div class="form-group">
-    <input type="search"
-           name="searchStr"
+    <input [(ngModel)]="searchString"
+           type="search"
+           name="searchString"
            class="form-control"
            placeholder="Search for a song..."
     />
   </div>
 </form>
+<app-results [queryString]="searchString"></app-results>

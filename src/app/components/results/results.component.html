@@ -1,13 +1,11 @@
-<p>
-  results works!
-</p>
 
-<p *ngIf="searchStr">Showing search results for <span>{{searchStr}}</span></p>
 
-<div class="container search__container">
-  <div class="search__results" *ngIf="results">
-    <h2 class="search__heading">Results</h2>
-    <div class="" *ngFor="let result of results">
+<p *ngIf="queryString">Showing search results for <span>{{queryString}}</span></p>
+
+<div class="container search__container" *ngIf="results">
+  <h2 class="search__heading" *ngIf="queryString">Showing search results for <span>{{queryString}}</span></h2>
+  <div class="search__results">
+    <div class="result__item" *ngFor="let result of results">
       <h3 class="result__heading" [attr.data-track-id]="result.id">{{result.name}}</h3>
       <img class="result__img" *ngIf="result.album.images.length > 0" src={{result.album.images[0].url}} />
       <div class="" *ngIf="result.artists.length > 0">
