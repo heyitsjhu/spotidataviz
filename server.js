@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
+var cors = require('cors');
 const http = require('http');
 const bodyParser = require('body-parser');
 
@@ -15,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// set cors middleware
+app.use(cors());
+
 // Set our api routes
 app.use('/api', api);
 
@@ -22,6 +27,8 @@ app.use('/api', api);
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
+
+
 
 /**
  * Get port from environment and store in Express.

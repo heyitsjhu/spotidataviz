@@ -1,0 +1,20 @@
+.search__container {
+  display: flex;
+}
+.search__results {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.search__heading {
+
+}
+
+.result__heading {
+
+}
+
+.result__img {
+  width: 150px;
+  max-width: 80%;
+}
