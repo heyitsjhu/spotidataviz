@@ -23,11 +23,15 @@ export class ResultsComponent implements OnInit, OnChanges {
 
   fetchResults(query) {
     if (query) {
-       this._spotifyService.getSearchResults(query)
+      this._spotifyService.getSearchResults(query)
         .subscribe(results => {
           console.log('ngInit running in search component');
             this.results = results["tracks"].items;
-        });
-      }
+      });
     }
+  }
+
+  setTrack(id) {
+    console.log('track id: ' + id );
+  }
 }

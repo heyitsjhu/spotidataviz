@@ -1,10 +1,15 @@
 <div class="search__results" *ngIf="results">
-  <div class="result__item" *ngFor="let result of results" [attr.data-track-id]="result.id">
+  <div class="result__item" *ngFor="let result of results;" [attr.data-track-id]="result.id">
     <div class="img__container">
-      <img class="result-item__img" *ngIf="result.album.images.length > 0" src={{result.album.images[0].url}} />
+      <a [routerLink]="['/track']" [queryParams]="{id: result.id }">
+        <img *ngIf="result.album.images.length"
+             (click)="setTrack(result.id)"
+             src={{result.album.images[0].url}}
+             class="result-item__img" />
+      </a>
     </div>
     <h3 class="result-item__heading">{{result.name}}</h3>
-    <p class="result-item__description" *ngIf="result.artists.length > 0">By:
+    <p class="result-item__description" *ngIf="result.artists.length">By:
       <span *ngFor="let artist of result.artists; index as i; last as isLast">
         <a href={{artist.external_urls.spotify}}>{{artist.name}}</a><span *ngIf="!isLast">,</span>
       </span>

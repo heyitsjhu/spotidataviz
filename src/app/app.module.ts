@@ -9,12 +9,17 @@ import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
 
 import { SpotifyService } from './services/spotify/spotify.service';
+import { TrackComponent } from './components/track/track.component';
 
 const appRoutes: Routes = [
   {
     path: '',
     redirectTo: 'results',
     pathMatch: 'full'
+  },
+  {
+    path: 'track',
+    component: TrackComponent
   }
 ];
 
@@ -22,7 +27,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SearchComponent,
-    ResultsComponent
+    ResultsComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,

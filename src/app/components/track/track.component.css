@@ -1,0 +1,8 @@
+.summary {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.summary__item {
+  width: 20%;
+}
