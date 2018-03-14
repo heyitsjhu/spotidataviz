@@ -1,6 +1,7 @@
 <form class="search__form">
   <div class="form-group">
     <input [(ngModel)]="searchString"
+           (keyup)="onInputChange()"
            type="search"
            name="searchString"
            class="form-control"
@@ -10,5 +11,4 @@
 </form>
 <div class="search__container">
   <h2 class="search__heading" *ngIf="searchString">Showing search results for <span>{{searchString}}</span></h2>
-  <app-results [queryString]="searchString"></app-results>
 </div>

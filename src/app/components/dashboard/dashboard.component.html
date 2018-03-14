@@ -1,0 +1,8 @@
+<app-search-bar (onSearchUpdated)="onCapturedSearch($event)"></app-search-bar>
+
+<app-search-results
+  [searchResults]="searchResults"
+  (onTrackSelected)="onCapturedTrack($event)">
+</app-search-results>
+
+<router-outlet></router-outlet>

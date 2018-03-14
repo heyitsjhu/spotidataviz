@@ -1,37 +1,25 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
-import { SpotifyService } from '../../services/spotify/spotify.service';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-results',
+  selector: 'app-search-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements OnInit, OnChanges {
-  @Input('queryString') queryString: string;
-  results: any[];
+export class ResultsComponent {
+  @Input('searchResults') searchResults: any[];
+  @Output() onTrackSelected = new EventEmitter();
+  selectedTrack:string;
 
-  constructor(private _spotifyService: SpotifyService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.fetchResults('odesza');
+  onTrackSelect(trackId) {
+    console.log(`(${this.constructor.name}): Track select emitter triggered`);
+    this.selectedTrack = trackId;
+    this.onTrackSelected.emit(null);
   }
 
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    console.log(changes['queryString'].currentValue);
-    this.fetchResults(changes['queryString'].currentValue);
+  getTrackId() {
+    return this.selectedTrack;
   }
 
-  fetchResults(query) {
-    if (query) {
-      this._spotifyService.getSearchResults(query)
-        .subscribe(results => {
-          console.log('ngInit running in search component');
-            this.results = results["tracks"].items;
-      });
-    }
-  }
-
-  setTrack(id) {
-    console.log('track id: ' + id );
-  }
 }

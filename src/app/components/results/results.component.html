@@ -1,9 +1,9 @@
-<div class="search__results" *ngIf="results">
-  <div class="result__item" *ngFor="let result of results;" [attr.data-track-id]="result.id">
+<div class="search__results" *ngIf="searchResults">
+  <div class="result__item" *ngFor="let result of searchResults;" [attr.data-track-id]="result.id">
     <div class="img__container">
       <a [routerLink]="['/track']" [queryParams]="{id: result.id }">
         <img *ngIf="result.album.images.length"
-             (click)="setTrack(result.id)"
+             (click)="onTrackSelect(result.id)"
              src={{result.album.images[0].url}}
              class="result-item__img" />
       </a>

@@ -15,4 +15,11 @@ export class SpotifyService {
     return this._http.get('/api/results', options).map(res => res);
   }
 
+  getTrackAudioFeatures(id: string) {
+    id = id.trim();
+    const options = id ? { params: new HttpParams().set('id', id) } : {};
+
+    return this._http.get('/api/track', options).map(res => res);
+  }
+
 }

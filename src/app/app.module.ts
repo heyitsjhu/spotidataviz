@@ -5,18 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
-
-import { SpotifyService } from './services/spotify/spotify.service';
 import { TrackComponent } from './components/track/track.component';
 
+import { SpotifyService } from './services/spotify/spotify.service';
+
 const appRoutes: Routes = [
-  {
-    path: '',
-    redirectTo: 'results',
-    pathMatch: 'full'
-  },
   {
     path: 'track',
     component: TrackComponent
@@ -26,8 +22,9 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent,
+    DashboardComponent,
     ResultsComponent,
+    SearchComponent,
     TrackComponent
   ],
   imports: [

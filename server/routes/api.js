@@ -24,4 +24,18 @@ router.get('/results', (req, res) => {
     });
 });
 
+router.get('/track', (req, res) => {
+  // console.log(req.query); // check what the current query inputs are
+  let endpoint = 'audio-features';
+  let id = req.query.id;
+  spotify
+    .request(`https://api.spotify.com/v1/${endpoint}/${id}`)
+    .then(function(data) {
+      res.status(200).json(data);
+    })
+    .catch(function(err) {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
