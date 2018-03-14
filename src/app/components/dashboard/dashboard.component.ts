@@ -18,7 +18,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild(ResultsComponent)
   private resultsComponent: ResultsComponent;
 
-  searchResults: any[];
+  searchResults: any;
+  trackAudioFeatures: any;
+  trackAudioAnalysis: any;
 
   constructor(
     private _spotifyService: SpotifyService
@@ -36,32 +38,33 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   onCapturedSearch() {
     let query = this.searchComponent.getSearchString();
     console.log(`(${this.constructor.name}): onCapturedSearch() received search emitter with value: ${query}`);
-    this.fetchSearchResults(query);
+    this.fetchResults('search', query);
   }
 
   onCapturedTrack() {
     let trackId = this.resultsComponent.getTrackId();;
     console.log(`(${this.constructor.name}): onCapturedTrack() received results emitter with id: ${trackId}`);
-    this.fetchTrackAudioFeatures(trackId);
+    this.fetchResults('audio-features', trackId);
+    this.fetchResults('audio-analysis', trackId);
   }
 
-  fetchSearchResults(searchQuery) {
+  fetchResults(endpoint, searchQuery) {
     if (searchQuery) {
-      this._spotifyService.getSearchResults(searchQuery)
+      this._spotifyService.getResults(endpoint, searchQuery)
         .subscribe(results => {
-          this.searchResults = results["tracks"].items;
-          console.log(`Fetched results (count: ${this.searchResults.length})`);
-      });
-    }
-  }
-
-  fetchTrackAudioFeatures(trackId) {
-    if (trackId) {
-      this._spotifyService.getTrackAudioFeatures(trackId)
-        .subscribe(result => {
-          // this.searchResults = results["tracks"].items;
-          console.log('Track Analysis Result:', result);
-      });
+          switch (endpoint) {
+          case 'search':
+            this.searchResults = results["tracks"].items;
+            break;
+          case 'audio-features':
+            this.trackAudioFeatures = results;
+            console.log('Track Audio Features Result:', results);
+            break;
+          case 'audio-analysis':
+            this.trackAudioAnalysis = results;
+            console.log('Track Analysis Result:', results);
+          }
+        });
     }
   }
 

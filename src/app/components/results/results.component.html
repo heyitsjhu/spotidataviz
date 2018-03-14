@@ -1,5 +1,5 @@
 <div class="search__results" *ngIf="searchResults">
-  <div class="result__item" *ngFor="let result of searchResults;" [attr.data-track-id]="result.id">
+  <div class="result__item" *ngFor="let result of searchResults" [attr.data-track-id]="result.id">
     <div class="img__container">
       <a [routerLink]="['/track']" [queryParams]="{id: result.id }">
         <img *ngIf="result.album.images.length"

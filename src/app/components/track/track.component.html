@@ -1,6 +1,9 @@
-<div class="summary">
-  <div class="summary__card">
-    <span>Icon</span>
-    <span>Rating</span>
+<p>
+  track works!
+</p>
+<div *ngIf="trackAudioFeatures">
+  <div *ngFor="let feature of featuresList">
+      <h3>{{ feature }}</h3>
+      <p>Score: {{trackAudioFeatures[feature]}}</p>
   </div>
 </div>

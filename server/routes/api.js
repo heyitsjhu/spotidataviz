@@ -13,23 +13,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/results', (req, res) => {
-  // console.log(req.query); // check what the current query inputs are
-  spotify
-    .search({ type: 'track', query: req.query.q })
-    .then(function(data) {
-      res.status(200).json(data);
-    })
-    .catch(function(err) {
-      res.status(500).json(err);
-    });
-});
+  console.log(req.query); // check what the current query inputs are
+  let endpoint = req.query.t === 'search' ? 'search?limit=20&type=track&q=' : req.query.t +'/';
+  let query = req.query.q;
 
-router.get('/track', (req, res) => {
-  // console.log(req.query); // check what the current query inputs are
-  let endpoint = 'audio-features';
-  let id = req.query.id;
   spotify
-    .request(`https://api.spotify.com/v1/${endpoint}/${id}`)
+    .request(`https://api.spotify.com/v1/${endpoint}${query}`)
     .then(function(data) {
       res.status(200).json(data);
     })
