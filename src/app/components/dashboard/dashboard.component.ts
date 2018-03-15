@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ){}
 
   ngOnInit() {
+    this.fetchResults('search', 'odesza');
   }
   ngAfterViewInit() {
     // Redefine `seconds()` to get from the `CountdownTimerComponent.seconds` ...

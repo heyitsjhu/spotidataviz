@@ -1,18 +1,19 @@
-<div class="search__results" *ngIf="searchResults">
-  <div class="result__item" *ngFor="let result of searchResults" [attr.data-track-id]="result.id">
-    <div class="img__container">
+<div class="search__results" *ngIf="searchResults" [ngClass]="{'results--show': searchResults}">
+  <div class="card" *ngFor="let result of searchResults" [attr.data-track-id]="result.id">
+    <div class="card__image">
       <a [routerLink]="['/track']" [queryParams]="{id: result.id }">
         <img *ngIf="result.album.images.length"
-             (click)="onTrackSelect(result.id)"
-             src={{result.album.images[0].url}}
-             class="result-item__img" />
+             src={{result.album.images[0].url}} />
       </a>
     </div>
-    <h3 class="result-item__heading">{{result.name}}</h3>
-    <p class="result-item__description" *ngIf="result.artists.length">By:
-      <span *ngFor="let artist of result.artists; index as i; last as isLast">
-        <a href={{artist.external_urls.spotify}}>{{artist.name}}</a><span *ngIf="!isLast">,</span>
-      </span>
-    </p>
+    <div class="card__content">
+      <h3 class="card__heading">{{result.name}}</h3>
+      <p class="card__description" *ngIf="result.artists.length">
+        <span *ngFor="let artist of result.artists; index as i; last as isLast">
+          <a href={{artist.external_urls.spotify}}>{{artist.name}}</a><span *ngIf="!isLast">,</span>
+        </span>
+      </p>
+    </div>
+    <button class="card__button" (click)="onTrackSelect(result.id)">View Track</button>
   </div>
 </div>

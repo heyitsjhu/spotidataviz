@@ -1,10 +1,15 @@
-<app-search-bar (onSearchUpdated)="onCapturedSearch($event)"></app-search-bar>
+<header id="dashboard-header" class="dashboard__header">
+  <app-search-bar (onSearchUpdated)="onCapturedSearch($event)"></app-search-bar>
+</header>
+<section id="search-results">
+  <app-search-results
+    [searchResults]="searchResults"
+    (onTrackSelected)="onCapturedTrack($event)">
+  </app-search-results>
+</section>
 
-<app-search-results
-  [searchResults]="searchResults"
-  (onTrackSelected)="onCapturedTrack($event)">
-</app-search-results>
+<section id="track-analysis">
+  <app-track [trackAudioFeatures]="trackAudioFeatures"></app-track>
+</section>
 
-<app-track [trackAudioFeatures]="trackAudioFeatures"></app-track>
-
-<router-outlet></router-outlet>
+  <!-- <router-outlet></router-outlet> -->

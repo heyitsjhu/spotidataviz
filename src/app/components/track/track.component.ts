@@ -11,6 +11,7 @@ export class TrackComponent implements OnInit {
   featuresList = [
     'acousticness',
     'danceability',
+    'duration_ms',
     'energy',
     'instrumentalness',
     'liveness',
@@ -25,6 +26,6 @@ export class TrackComponent implements OnInit {
   ngOnInit() {
   }
 
-
-
+  format(number) {
+  }
 }
