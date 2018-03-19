@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TrackComponent implements OnInit {
 
   @Input('trackAudioFeatures') trackAudioFeatures: any[];
+  @Input('trackAudioAnalysis') trackAudioAnalysis: any[];
+
   featuresList = [
     'acousticness',
     'danceability',

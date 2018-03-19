@@ -2,6 +2,12 @@
 <div class="track__features container" *ngIf="trackAudioFeatures">
   <div class="widget" *ngFor="let feature of featuresList">
       <h3 class="widget__title">{{ feature }}</h3>
-      <p class="widget__label label--circle">{{format(trackAudioFeatures[feature])}}</p>
+      <p class="widget__label label--circle">{{ trackAudioFeatures[feature] }}</p>
+  </div>
+</div>
+<div class="track__analysis container" *ngIf="trackAudioAnalysis">
+  <div class="widget" *ngFor="let bar of trackAudioAnalysis['bars']">
+      <h3 class="widget__title">{{ bar.start }}</h3>
+      <p class="widget__label label--circle">{{ bar.confidence }}</p>
   </div>
 </div>
