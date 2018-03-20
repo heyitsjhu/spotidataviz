@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChange } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
