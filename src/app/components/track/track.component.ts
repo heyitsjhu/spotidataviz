@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChange } from '@angular/core';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-track',
@@ -28,6 +29,30 @@ export class TrackComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(changes) {
+    if ( Object.keys(changes)[0] === 'trackAudioAnalysis' ) {
+      console.log('changes', changes['trackAudioAnalysis']);
+      let data = changes['trackAudioAnalysis']['currentValue'];
+      this.generateAudioAnalysis(data);
+    }
+  }
+
+  generateAudioAnalysis(data) {
+    let audioBars = data['bars'];
+    let audioBeats = data['beats'];
+    let audioMeta = data['meta'];
+    let audioSections = data['sections'];
+    let audioSegments = data['segments'];
+    let audioTatum = data['tatums'];
+    let audioTrack = data['track'];
+
+    console.log(audioBars, audioBeats, audioMeta, audioSections, audioSegments, audioTatum, audioTrack);
+
+    // return d3.selectAll('span')
+    //   .data(data)
+    //   .enter().append('span')
+    //   .text(function(d) { return "I’m number " + d + "!"; });
+  }
   format(number) {
   }
 }
