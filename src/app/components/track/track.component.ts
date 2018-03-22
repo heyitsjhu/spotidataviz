@@ -46,12 +46,17 @@ export class TrackComponent implements OnInit {
     let audioTatum = data['tatums'];
     let audioTrack = data['track'];
 
-    console.log(audioBars, audioBeats, audioMeta, audioSections, audioSegments, audioTatum, audioTrack);
+    let svgContainer = d3.select('.track__analysis')
+      .append('svg')
+      .selectAll('span');
 
-    // return d3.selectAll('span')
-    //   .data(data)
-    //   .enter().append('span')
-    //   .text(function(d) { return "I’m number " + d + "!"; });
+    console.log(audioBars, audioBeats, audioMeta, audioSections, audioSegments, audioTatum, audioTrack);
+    return d3.select('.track__analysis')
+      .append('svg')
+      .selectAll('span')
+      .data(audioBars)
+      .enter().append('span')
+      .text(function(d) { return "I’m number " + d + "!"; });
   }
   format(number) {
   }
